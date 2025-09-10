@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  sample-app:
+    image: python:3.11-slim
+    container_name: sample-app
+    working_dir: /app
+    command: ["python", "app.py"]
+    volumes:
+      - ./sample-app/app.py:/app/app.py:ro
+    depends_on:
+      - logstash
+    networks:
+      - elk
